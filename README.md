@@ -6,9 +6,17 @@ One day, TerryCCI wanted to play chinese checker with his friends. But then he f
 
 This is a Vite + React.js frontend single page application, aimed for multiplayer experience with socket.io.
 
-### Development Server
+### Development server
 
 ```sh
 npm install
 npm run dev
+```
+
+### Building the application
+
+The default output directory is `/dist`
+
+```sh
+npm run build
 ```
