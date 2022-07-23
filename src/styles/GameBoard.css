@@ -1,0 +1,24 @@
+.gameboard {
+  width: 95vmin;
+  height: 95vmin;
+  border: 1px solid white;
+  position: relative;
+  border-radius: 50%;
+}
+
+.gameboard__cell {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+  border: 1px solid white;
+  border-radius: 50%;
+
+  font-size: 0.5rem;
+  color: aqua;
+}
+
+.gameboard__cell--active {
+  background-color: white;
+}
