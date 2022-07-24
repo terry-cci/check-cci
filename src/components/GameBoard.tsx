@@ -38,7 +38,7 @@ export default function GameBoard() {
               key={loc.toString()}
               loc={loc}
               gap={cellGap}
-              handleClick={(e: SyntheticEvent) => handleCellClick(e, loc)}
+              handleClick={(e) => handleCellClick(e, loc)}
             />
           );
         }
