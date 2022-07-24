@@ -18,10 +18,13 @@ export const mainSlice = createSlice({
   name: "main",
   initialState,
   reducers: {
-    setPlayerCount: (state, action: PayloadAction<number>) => {
+    setPlayerCount: (
+      state: Draft<MainState>,
+      action: PayloadAction<number>
+    ) => {
       state.playerCount = action.payload;
     },
-  } as SliceCaseReducers<MainState>,
+  },
 });
 
 export const { setPlayerCount } = mainSlice.actions;
