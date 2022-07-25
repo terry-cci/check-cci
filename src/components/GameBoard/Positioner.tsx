@@ -11,6 +11,7 @@ interface PositionerProps {
 const skew: Matrix = [
   [1, 0],
   [-Math.cos(Math.PI / 3), Math.sin(Math.PI / 3)],
+  // [0, 1],
 ];
 
 export const GAP = (100 * Math.cos(Math.PI / 6)) / 12;
@@ -23,6 +24,7 @@ export default function Positioner(props: PositionerProps) {
   );
 
   const style = css({
+    position: "absolute",
     width: `${props.size[0]}%`,
     height: `${props.size[1]}%`,
     left: `${renderLocation[0]}%`,

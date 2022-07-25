@@ -55,6 +55,7 @@ export const mainSlice = createSlice({
 
     selectMarble: (state: Draft<MainState>, action: PayloadAction<Marble>) => {
       state.selectedMarbleId = action.payload.id;
+      state.selectedDestination = undefined;
     },
     unselectMarble: (state: Draft<MainState>) => {
       state.selectedMarbleId = undefined;
@@ -76,7 +77,7 @@ export const mainSlice = createSlice({
       if (!state.selectedDestination) return;
 
       selectedMarble.location = state.selectedDestination;
-      state.selectedMarbleId = undefined;
+
       state.selectedDestination = undefined;
     },
 

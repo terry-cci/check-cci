@@ -11,6 +11,8 @@
   transition-duration: 500ms;
   transition-property: left top;
   transition-timing-function: ease;
+
+  user-select: none;
 }
 
 .gameboard__positioner > * {
@@ -19,24 +21,23 @@
 }
 
 .gameboard__cell {
-  position: absolute;
-
   background: #222;
   border: 1px solid white;
   border-radius: 50%;
 
-  color: aqua;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
 
-.gameboard__cell--selected {
-  background-color: white;
+  font-size: 1.5vmin;
 }
 
 .gameboard__marble {
-  position: absolute;
-
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 1.8vmin;
   border: 1px solid #63cabb;
 
   display: flex;
@@ -46,10 +47,33 @@
   font-weight: bold;
 
   background-color: #007060;
-  color: white;
+  color: black;
 }
 
 .gameboard__marble--selected {
   border-width: 3px;
   border-color: rgb(255, 0, 60);
+}
+
+.gameboard__hint-cell {
+  opacity: 0;
+  background: rgb(16, 196, 100);
+  border-radius: 50%;
+
+  animation-name: fade-in;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gameboard__hint-cell--selected {
+  background-color: rgb(255, 255, 255);
 }
