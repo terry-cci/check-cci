@@ -5,4 +5,8 @@
   bottom: 0;
   background-color: #222;
   padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
 }

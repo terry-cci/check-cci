@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import React, { SyntheticEvent } from "react";
 
 import v, { Matrix, Vector } from "@/utils/vector";
+import { useAppSelector } from "@/store/hooks";
 
 interface MarbelCellProps {
   active: boolean;
@@ -20,6 +21,10 @@ const origin: Vector = [50 * (1 - Math.cos(Math.PI / 6)), 25];
 const CELL_SIZE_FACTOR = 1 / 2;
 
 export default function MarbleCell(props: MarbelCellProps) {
+  const marble = useAppSelector((state) =>
+    state.main.marbles.find((marble) => v.equals(marble.location, props.loc))
+  );
+
   const cellSize: Vector = [
     props.gap * CELL_SIZE_FACTOR,
     props.gap * CELL_SIZE_FACTOR,
@@ -42,6 +47,7 @@ export default function MarbleCell(props: MarbelCellProps) {
       }}
       onClick={props.handleClick}
     >
+      {marble?.team.id}
       {/* <span
         css={{
           position: "absolute",
