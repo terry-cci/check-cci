@@ -34,8 +34,8 @@
 
   font-size: 1.5vmin;
 
-  transition-property: border-color, border-width;
-  transition-duration: 500ms;
+  transition-property: border-color, border-width, background-color;
+  transition-duration: 300ms;
 }
 
 .gameboard__cell--hinted {
@@ -44,13 +44,13 @@
 
 .gameboard__cell--selected {
   border-width: 0.7vmin;
-  background-color: rgb(0, 255, 234);
+  background-color: #3fa400;
 }
 
 .gameboard__marble {
   border-radius: 50%;
   font-size: 1.8vmin;
-  border: 0.6vmin outset currentColor;
+  border: 0.6vmin outset var(--lighten-marble-color);
 
   display: flex;
   align-items: center;
@@ -58,10 +58,10 @@
 
   font-weight: bold;
 
-  background-color: #007060;
+  background-color: var(--marble-color);
   color: black;
 }
 
 .gameboard__marble--selected {
-  border-color: #00fbff;
+  border-color: #3fa400;
 }

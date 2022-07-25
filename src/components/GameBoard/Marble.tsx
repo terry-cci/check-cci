@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { selectMarble } from "@/store/main";
 import { Marble as MarbleType } from "@/types/Marble";
+import { lightenHex } from "@/utils/color";
 import v, { Vector } from "@/utils/vector";
 import { css } from "@emotion/react";
 import React from "react";
@@ -27,7 +28,8 @@ export default function Marble(props: MarbleProps) {
   }
 
   const style = css({
-    backgroundColor: props.marble.color,
+    "--marble-color": props.marble.color,
+    "--lighten-marble-color": lightenHex(props.marble.color, 100),
   });
 
   return (
