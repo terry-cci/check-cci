@@ -16,7 +16,8 @@
     "@reduxjs/toolkit": "^1.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.2"
+    "react-redux": "^8.0.2",
+    "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",

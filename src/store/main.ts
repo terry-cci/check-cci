@@ -91,13 +91,12 @@ export const mainSlice = createSlice({
           state.playerCount.toString() as keyof typeof map.teamSetting
         ];
 
-      let marbleId = 1;
       state.marbles = teams.flatMap((teamIdx) => {
         const team = map.teams[teamIdx];
 
-        const marbles = team.cells.map(([x, y]) => {
+        const marbles = team.cells.map(([x, y], marbleIdx) => {
           const marble: Marble = {
-            id: team.id * 100 + marbleId++,
+            id: team.id * 100 + marbleIdx + 1,
             team: {
               id: team.id,
             },

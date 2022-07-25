@@ -7,6 +7,7 @@ import MarbleCell from "./GameBoard/MarbleCell";
 import { Vector } from "@/utils/vector";
 import { useAppSelector } from "@/store/hooks";
 import Marble from "./GameBoard/Marble";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function GameBoard() {
   const marbles = useAppSelector((state) => state.main.marbles);
@@ -25,9 +26,17 @@ export default function GameBoard() {
         return row;
       })}
 
-      {marbles.map((marble) => (
-        <Marble marble={marble} key={marble.id} />
-      ))}
+      <TransitionGroup>
+        {marbles.map((marble) => (
+          <CSSTransition
+            key={marble.id}
+            timeout={300}
+            classNames="gameboard__marble-"
+          >
+            <Marble marble={marble} />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
     </div>
   );
 }

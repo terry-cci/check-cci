@@ -29,7 +29,7 @@ export default function LeftSideBar() {
         onClick={() => dispatch(confirmMove())}
         disabled={!validMove}
       >
-        確定下子
+        移動波子
       </Button>
     </div>
   );

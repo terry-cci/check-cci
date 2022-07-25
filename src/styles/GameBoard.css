@@ -63,5 +63,27 @@
 }
 
 .gameboard__marble--selected {
+  position: relative;
   border-color: #3fa400;
+  z-index: 10;
+}
+
+.gameboard__marble--enter-active,
+.gameboard__marble--exit-active {
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+.gameboard__marble--enter {
+  transform: scale(0);
+}
+.gameboard__marble--enter-active {
+  transform: scale(1);
+}
+.gameboard__marble--exit {
+  transform: scale(1);
+}
+.gameboard__marble--exit-active {
+  transform: scale(0);
 }
