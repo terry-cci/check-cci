@@ -2,19 +2,49 @@ import { Marble } from "@/types/Marble";
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 
 import map from "@/data/map.json";
-import { Vector } from "@/utils/vector";
+import v, { Vector } from "@/utils/vector";
+import { isInBound } from "@/utils/map";
 
+const DIRECTIONS: Vector[] = [
+  [-1, -1],
+  [-1, 0],
+  [0, -1],
+  [0, 1],
+  [1, 0],
+  [1, 1],
+];
 interface MainState {
   playerCount: number;
   marbles: Marble[];
   selectedMarbleId?: number;
   selectedDestination?: Vector;
+  movableLocations: Vector[];
 }
 
 const initialState: MainState = {
   playerCount: 2,
   marbles: [],
+  movableLocations: [],
 };
+v;
+function getMoableLocations(state: Draft<MainState>, location: Vector) {
+  const marbleOn = (location: Vector) =>
+    state.marbles.find((marble) => v.equals(marble.location, location));
+
+  const movableLocations: Vector[] = [];
+
+  // adjacent locations
+  DIRECTIONS.forEach((direction) => {
+    const newLocation = v.add(location, direction);
+
+    if (!isInBound(newLocation)) return;
+    if (marbleOn(newLocation)) return;
+
+    movableLocations.push(newLocation);
+  });
+
+  return movableLocations;
+}
 
 export const mainSlice = createSlice({
   name: "main",
@@ -53,9 +83,20 @@ export const mainSlice = createSlice({
       });
     },
 
+    setMovableLocations: (
+      state: Draft<MainState>,
+      action: PayloadAction<Vector[]>
+    ) => {
+      state.movableLocations = action.payload;
+    },
+
     selectMarble: (state: Draft<MainState>, action: PayloadAction<Marble>) => {
       state.selectedMarbleId = action.payload.id;
       state.selectedDestination = undefined;
+      state.movableLocations = getMoableLocations(
+        state,
+        action.payload.location
+      );
     },
     unselectMarble: (state: Draft<MainState>) => {
       state.selectedMarbleId = undefined;
@@ -77,6 +118,10 @@ export const mainSlice = createSlice({
       if (!state.selectedDestination) return;
 
       selectedMarble.location = state.selectedDestination;
+      state.movableLocations = getMoableLocations(
+        state,
+        state.selectedDestination
+      );
 
       state.selectedDestination = undefined;
     },
@@ -100,6 +145,7 @@ export const {
   selectDestination,
   unselectDestination,
   confirmMove,
+  setMovableLocations,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

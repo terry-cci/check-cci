@@ -1,13 +1,12 @@
-import React, { SyntheticEvent, useState } from "react";
+import React from "react";
 
 import "@/styles/GameBoard.css";
 
 import map from "@/data/map.json";
 import MarbleCell from "./GameBoard/MarbleCell";
-import v, { Vector } from "@/utils/vector";
+import { Vector } from "@/utils/vector";
 import { useAppSelector } from "@/store/hooks";
 import Marble from "./GameBoard/Marble";
-import MovingHints from "./GameBoard/MovingHints";
 
 export default function GameBoard() {
   const marbles = useAppSelector((state) => state.main.marbles);
@@ -25,8 +24,6 @@ export default function GameBoard() {
         }
         return row;
       })}
-
-      <MovingHints />
 
       {marbles.map((marble) => (
         <Marble marble={marble} key={marble.id} />

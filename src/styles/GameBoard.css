@@ -33,6 +33,17 @@
   color: rgb(255, 255, 255);
 
   font-size: 1.5vmin;
+
+  transition-property: background-color;
+  transition-duration: 500ms;
+}
+
+.gameboard__cell--hinted {
+  background: rgb(16, 196, 100);
+}
+
+.gameboard__cell--selected {
+  background-color: rgb(255, 255, 255);
 }
 
 .gameboard__marble {
@@ -53,27 +64,4 @@
 .gameboard__marble--selected {
   border-width: 3px;
   border-color: rgb(255, 0, 60);
-}
-
-.gameboard__hint-cell {
-  opacity: 0;
-  background: rgb(16, 196, 100);
-  border-radius: 50%;
-
-  animation-name: fade-in;
-  animation-duration: 500ms;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.gameboard__hint-cell--selected {
-  background-color: rgb(255, 255, 255);
 }
