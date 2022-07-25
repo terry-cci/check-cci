@@ -5,6 +5,7 @@ export type Team = {
 };
 
 export type Marble = {
+  id: number;
   team: Team;
   location: Vector;
 };
