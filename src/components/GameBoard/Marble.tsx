@@ -41,7 +41,7 @@ export default function Marble(props: MarbleProps) {
         onClick={handleClick}
         css={style}
       >
-        {props.marble.id}
+        {/* {props.marble.id} */}
       </div>
     </Positioner>
   );

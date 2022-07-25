@@ -43,6 +43,34 @@ function getMoableLocations(state: Draft<MainState>, location: Vector) {
     movableLocations.push(newLocation);
   });
 
+  // jumping
+  DIRECTIONS.forEach((direction) => {
+    let currentLocation = location;
+    let firstBlockingDistance: number | undefined;
+    let distance = 0;
+
+    while (true) {
+      currentLocation = v.add(currentLocation, direction);
+      distance++;
+
+      if (!isInBound(currentLocation)) break;
+
+      if (marbleOn(currentLocation)) {
+        if (!firstBlockingDistance) {
+          firstBlockingDistance = distance;
+        } else {
+          break;
+        }
+      } else if (
+        firstBlockingDistance &&
+        distance === firstBlockingDistance * 2
+      ) {
+        movableLocations.push(currentLocation);
+        break;
+      }
+    }
+  });
+
   return movableLocations;
 }
 
@@ -81,6 +109,10 @@ export const mainSlice = createSlice({
 
         return marbles;
       });
+
+      state.movableLocations = [];
+      state.selectedDestination = undefined;
+      state.selectedMarbleId = undefined;
     },
 
     setMovableLocations: (
