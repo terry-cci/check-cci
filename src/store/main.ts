@@ -34,16 +34,17 @@ export const mainSlice = createSlice({
         ];
 
       let marbleId = 1;
-      state.marbles = teams.flatMap((teamId, teamIdx) => {
-        const team = map.teams[teamId];
+      state.marbles = teams.flatMap((teamIdx) => {
+        const team = map.teams[teamIdx];
 
         const marbles = team.cells.map(([x, y]) => {
           const marble: Marble = {
-            id: marbleId++,
+            id: team.id * 100 + marbleId++,
             team: {
-              id: teamIdx + 1,
+              id: team.id,
             },
             location: [x, y],
+            color: team.color,
           };
           return marble;
         });

@@ -8,4 +8,5 @@ export type Marble = {
   id: number;
   team: Team;
   location: Vector;
+  color: string;
 };

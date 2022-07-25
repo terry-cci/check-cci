@@ -26,6 +26,10 @@ export default function Marble(props: MarbleProps) {
     dispatch(selectMarble(props.marble));
   }
 
+  const style = css({
+    backgroundColor: props.marble.color,
+  });
+
   return (
     <Positioner location={props.marble.location} size={MARBLE_SIZE}>
       <div
@@ -35,8 +39,9 @@ export default function Marble(props: MarbleProps) {
             : ""
         }`}
         onClick={handleClick}
+        css={style}
       >
-        {props.marble.team.id}
+        {/* {props.marble.team.id} */}
       </div>
     </Positioner>
   );
